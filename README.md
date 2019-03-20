@@ -570,3 +570,76 @@ Remember message using...
 Remember message (to stop flood) using source and sequence number
 So next message (with higher sequence number) will go through
 To make flooding reliable, use Automatic Repeat Request (ARQ)
+
+# Every in assignment3 is in exam
+
+# Link stack rendering
+
+# How to compute shortest paths in a distributed network
+
+# Link-State Routing
+
+One of two approaches to routing
+Widely used in practice
+
+# Link-State Algorithm
+
+# Topology Dissemination
+
+Each node floods link state packet (LSP) that describes their portion of the topology.
+
+# Route Computation
+
+Each node has full topology
+
+# Forwarding Table
+
+Source Tree for E (from Dijkstra) E's Forwarding Table
+
+# Hanling Changes
+
+On changes, flood updated LSPs, and re-compute routes (E.g., nodes adjacent to failed link or node initiate)
+
+# Handling Changes
+
+Link failure: Both nodes notice, send updates LSPs. Link is removed from topology.
+Node failure: All neighbors notice a link has failed. Failed node can't update its own LSP. But it is OK: all links to node removed.
+
+How neighbor figure out a node is down? 
+
+# Link-State Complication
+
+Things that can go wrong: 
+1. Seq. number reaches max, or is corrupted
+2. Node crashes and loses seq. number
+3. Network partitions the heals
+
+Strategy
+Include age on LSPs and forget old information that is not refreshed
+
+Much of the complexity is due to handling corner cases
+
+# DV/LS Comparison
+
+Distance Vector
+Link State
+
+# IS-IS and OSPF Protocols
+
+Widely used in large enterprise and ISP networks.
+
+# Compromised Router
+
+Direct tracffic yo a 3rd party
+Man in the middle attack
+Packet Alteration
+Hijack traffic
+Passive Evesedropping
+Drop
+Delay
+out of order delivering
+Forged control packets
+
+# Exam
+
+Concise anwser
