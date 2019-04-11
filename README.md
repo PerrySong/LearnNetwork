@@ -643,3 +643,131 @@ Forged control packets
 # Exam
 
 Concise anwser
+
+# Structure of the Internet
+
+# Internet-wide Routing Issues
+
+# Effects of Indepemdent Parties
+
+# Routing Policies
+
+# ISP Internet service provider
+
+# AS (Autonomous Systems)
+
+# BGP Border Gateway Protocol
+
+# NAT
+
+# Middleboxes
+
+# Net (Network Address Translation) box
+
+# Private address
+
+# 4 / 9 / 2019 
+
+# Delay Discrimination
+Some middleboxes influence traffic flows by imposing discriminatory delays on different network flows;
+
+Pa: A packet with a predefined A properly and size l.
+Pb: A packet with a predefined properly B and size l.
+td(p): Departure time (time to transmit the last bit of packet p into the wire).
+ta(p): Arrival time of packet p to the middlebox.
+dMB := td(p) - ta(p), total delay imposed by middlebox on packet p.
+tT: transmission time.
+cP: The path capacity between sender R receiver.
+nI: initial packettrain: min number of packets you need to saturate the queue.
+
+loss rate = 1 - SA/X >= 1 - SA / CP >= T = 20 %
+
+# Delay Discriminator
+
+# Simulation
+
+# Wireshark plot
+To make plot
+
+# Network Security
+Threat model: The dangers and attacker's abilities
+Can not assess risk otherwise
+
+# Some example threats
+It's not all about encrypting messages
+
+Attacker: Eavedropper, Intruder, Impersonator, Extortionist
+
+# Security is hard as a negative goal
+Try to ensure security properties that do not let anything bad happen!
+Only as secure as the weakest link
+Could be design flaw or bug in code, But often the weak link is elsewhere
+
+# Risk Management
+WEP: Cryptography was flawed; can run cracking software to read WIFI traffic
+
+Today, WPA2/802.11i security
+Computationally infeasible to break!
+
+# Cryptology / Cryptanalysis
+
+# Encrypting information is useful for more than deterring eavesdroppers
+# Designing a secure cryptographic scheme is full of pitfalls!
+
+# Goal and Threat Model
+
+# TLS
+
+# Encryption/Decryption Model
+
+* Encryption is a reversible mapping
+* Assume attacker knows algorithm
+* Algorithm is parameterized by keys
+
+# Encryption/Decryption Model
+Two main kinds of encryption:
+Symmetric key encryption, e.g., AES
+Alice and Bob share secret key
+Encryption is a bit mangling box
+
+# Symmetric (Secret Key) Encryption
+
+# Key Distribution
+This is a big problem on a network! Often want to talk to new paries.
+Symmetric encryption problematic: Have to first set up shared secret.
+public key idea has own difficulties: Need trusted directory service.
+
+#  Symmetric vs Public Key
+Have complementary properties. Want the best of both.
+
+# Winning Combination
+Alice uses public key encryption to send Bob a small private message. (It's a key)
+Alice and Bob send large messages with symmetric encryption. Using the key they now share.
+The key is called a session key. Generated for short-term use.
+
+Encryption information to provide authenticity (= correct sender) and integrity.
+
+# 
+Goal is to let Bob verify yhe message came from Alice and is unchanged
+
+# Digital Signature
+
+Kind of public key operation - public/private key parts
+-> Autenticity and integrety in this case.
+
+# Speeding up Signatures
+
+# Message Digest or Cryptographic Hash
+* Digest/Hash is a secure checksum
+  * Deterministically mangles bits to pseudo-random output (like CRC)
+  * Can not find messages with same hash
+  * Acts as a fixed-length descriptor of message - very useful!
+
+# Preventing Replays
+We normally want more than confidentiality, integrity, and authenticity for secure messages!
+Do not want to mistake old message for a new one - a replay. Acting on it again may cause trouble.
+
+To prevent replays, we use "nounce" (one time approach).
+
+# TLS
+How tls actually works: https://lasr.ucla.edu/vahab/resources/notes_on_tls.pdf
