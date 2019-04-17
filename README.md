@@ -771,3 +771,58 @@ To prevent replays, we use "nounce" (one time approach).
 
 # TLS
 How tls actually works: https://lasr.ucla.edu/vahab/resources/notes_on_tls.pdf
+
+# Network Discriminator
+Detection Framework:
+For MB to be normally detectable it is sufficient to show:
+
+# Strict Priority Queuing
+SPQ is a network discriminator.
+
+# Detecting SPQ on Internet
+SND: the sending host
+RCV: the receiving host
+PH: The packet that is being p
+PL: The packet that is being de privitized
+TXQMB: Transmission queue of the middlebox
+CP: The path capacity from SND to RCV
+tT: transmission time
+r: The sending rate of the probe packets as received MB.
+N: Patter
+M: Num of repeating pattern
+
+|SND| (r) - X - |SPQ|TxQMB| - Z - |RCV|
+Z = Cp (path capacity)
+
+All possible scenerios: 
+1) Z < r <=  X 
+2) r <= X <= Z (Do not consider this case)
+3) r <= Z <= X  (Do not consider this case)
+
+Goal 1: Send Li's so that H queue never buid up.
+Goal 2: Make sure high priority queue always busy. Smin >= Theta = 1 ms
+
+Delta i = transmision time of All H' packets and Lx prior to Li
+L: size of all packets
+Si = tT(H') * (N'*(M - 1)) + SUM(tT(Lj)) for j = 0; j < i
+tT = L / Z 
+
+--- 
+Exist a case that: ...
+
+What is an optimal value for N'?
+In High priority pahse, Hi are sent at the r / (N' + 1)
+So as long as < Z, the Goal 1: r / (N' + 1) < Z
+In low priority phase, Hi are sent at the: r * N' / (N' + 1) 
+
+Z < r * N' / (N' + 1)  
+
+---
+Find lower bound:
+From 1 & 2
+r / (N' + 1) < Z < N' / (N' + 1) * r  
+
+N' > (r - Z) / Z
+N' > Z / (r - Z)
+
+Take the max above
