@@ -666,163 +666,118 @@ Concise anwser
 
 # Private address
 
-# 4 / 9 / 2019 
+# Middle boxes (Not in exam?)
+
+Definitions:
+End host
+NetworkFlow
+Middlebox
+Translucent middlebox
+
+# Compression detection
+Why more than one measurement?
 
 # Delay Discrimination
-Some middleboxes influence traffic flows by imposing discriminatory delays on different network flows;
+Some middleboxes influence traffic flows by imposing discriminatory delays on different network flows.
 
-Pa: A packet with a predefined A properly and size l.
-Pb: A packet with a predefined properly B and size l.
-td(p): Departure time (time to transmit the last bit of packet p into the wire).
-ta(p): Arrival time of packet p to the middlebox.
-dMB := td(p) - ta(p), total delay imposed by middlebox on packet p.
-tT: transmission time.
-cP: The path capacity between sender R receiver.
-nI: initial packettrain: min number of packets you need to saturate the queue.
+A middlebox imposes delay discrimination, if there exists a pair of non-empty sets of packets delay discriminatory.
 
-loss rate = 1 - SA/X >= 1 - SA / CP >= T = 20 %
+A middlebox is a network flow discrimination if there exists a pair of non-empty sets of packets (PA, PB) that is delay-discriminatory.
 
-# Delay Discriminator
+#  Project 2
 
-# Simulation
+Match function -> determine th epriority level
 
-# Wireshark plot
-To make plot
+Simulation validation -> Two application in the source node, two application in the destination node. 
 
-# Network Security
-Threat model: The dangers and attacker's abilities
-Can not assess risk otherwise
+# Firewall
 
-# Some example threats
-It's not all about encrypting messages
+# DNS
 
-Attacker: Eavedropper, Intruder, Impersonator, Extortionist
+Domain Name Syetem:
+1. Human readable hostname, more
+2. The distributed namespace
+3. 
 
-# Security is hard as a negative goal
-Try to ensure security properties that do not let anything bad happen!
-Only as secure as the weakest link
-Could be design flaw or bug in code, But often the weak link is elsewhere
+# DNS Zones
+# Domain Resource Records
+# 
 
-# Risk Management
-WEP: Cryptography was flawed; can run cracking software to read WIFI traffic
+# The DNS Name Space:
+DNS namespace is hierarchical from the root down
 
-Today, WPA2/802.11i security
-Computationally infeasible to break!
+# DNS Resolution
+DNS protocol resolves any host name (domain) to IP address
+If unknown, can start with the root name server and work down zones
 
-# Cryptology / Cryptanalysis
+I want to find out the IP address for "somedomain.com"
 
-# Encrypting information is useful for more than deterring eavesdroppers
-# Designing a secure cryptographic scheme is full of pitfalls!
+1. Machine send a query to local name server.
+2. If we ask for it for the very first time, then the machine will ask someone else -> choose a root.
+3. The local server will query the "Root Name Server" (return a name server), then so on and so forth.
 
-# Goal and Threat Model
+example cs.usf.edu
+Query -> edu -> Query -> usf.edu -> Query -> cs.usf.edu
 
-# TLS
+# Recursive Query:
+We ask the main server a question and the main server completes resolution and response
 
-# Encryption/Decryption Model
+# DNS Caching
+Any of the query we ask we cache it for awhile.
 
-* Encryption is a reversible mapping
-* Assume attacker knows algorithm
-* Algorithm is parameterized by keys
+# Root Name Server
 
-# Encryption/Decryption Model
-Two main kinds of encryption:
-Symmetric key encryption, e.g., AES
-Alice and Bob share secret key
-Encryption is a bit mangling box
+13 root servers over the world -> many replicas in the world
 
-# Symmetric (Secret Key) Encryption
+# Security By Publicity 
 
-# Key Distribution
-This is a big problem on a network! Often want to talk to new paries.
-Symmetric encryption problematic: Have to first set up shared secret.
-public key idea has own difficulties: Need trusted directory service.
+# Congestion
+Goodput
 
-#  Symmetric vs Public Key
-Have complementary properties. Want the best of both.
+Goodput / offered load (packets/sec)
+Delay / Offered load (packets/sec)
 
-# Winning Combination
-Alice uses public key encryption to send Bob a small private message. (It's a key)
-Alice and Bob send large messages with symmetric encryption. Using the key they now share.
-The key is called a session key. Generated for short-term use.
+# Bandwidth Allocation
+Efficiency vs. Fairness
 
-Encryption information to provide authenticity (= correct sender) and integrity.
+# Generalizing "Equal perFlow"
+
+# Max-Min Fairness
+
+# Recap of Lecture So far
+Want to allocat capacity to senders
+
+# Bandwidth Allocation Models
+
+# Additive Increase Multiplicative Decrease
+AIMD is a control law hosts can use to reach a good allocation
+
+# Approach to Adjust Rates:
+Window-based
+End-to-End
+Rote based
+Network-Assisted
+
+# AIMD Game
+
+# TCP Tahoe
+
+# Congestion window (cwnd)
+
+# TCP Startup Problem
+We want to quickly near the right rate, cwnd IDEAL, but it varies greatly
+
+# Slow-Start Solution
+
+# Timeout Misfortune
+
+# Inferring Loss from ACKs
+TCP uses a cumulative ACK
+
+# TCP Reno 
+** Summarizes today's lecture 
+
+#
+
 
 # 
-Goal is to let Bob verify yhe message came from Alice and is unchanged
-
-# Digital Signature
-
-Kind of public key operation - public/private key parts
--> Autenticity and integrety in this case.
-
-# Speeding up Signatures
-
-# Message Digest or Cryptographic Hash
-* Digest/Hash is a secure checksum
-  * Deterministically mangles bits to pseudo-random output (like CRC)
-  * Can not find messages with same hash
-  * Acts as a fixed-length descriptor of message - very useful!
-
-# Preventing Replays
-We normally want more than confidentiality, integrity, and authenticity for secure messages!
-Do not want to mistake old message for a new one - a replay. Acting on it again may cause trouble.
-
-To prevent replays, we use "nounce" (one time approach).
-
-# TLS
-How tls actually works: https://lasr.ucla.edu/vahab/resources/notes_on_tls.pdf
-
-# Network Discriminator
-Detection Framework:
-For MB to be normally detectable it is sufficient to show:
-
-# Strict Priority Queuing
-SPQ is a network discriminator.
-
-# Detecting SPQ on Internet
-SND: the sending host
-RCV: the receiving host
-PH: The packet that is being p
-PL: The packet that is being de privitized
-TXQMB: Transmission queue of the middlebox
-CP: The path capacity from SND to RCV
-tT: transmission time
-r: The sending rate of the probe packets as received MB.
-N: Patter
-M: Num of repeating pattern
-
-|SND| (r) - X - |SPQ|TxQMB| - Z - |RCV|
-Z = Cp (path capacity)
-
-All possible scenerios: 
-1) Z < r <=  X 
-2) r <= X <= Z (Do not consider this case)
-3) r <= Z <= X  (Do not consider this case)
-
-Goal 1: Send Li's so that H queue never buid up.
-Goal 2: Make sure high priority queue always busy. Smin >= Theta = 1 ms
-
-Delta i = transmision time of All H' packets and Lx prior to Li
-L: size of all packets
-Si = tT(H') * (N'*(M - 1)) + SUM(tT(Lj)) for j = 0; j < i
-tT = L / Z 
-
---- 
-Exist a case that: ...
-
-What is an optimal value for N'?
-In High priority pahse, Hi are sent at the r / (N' + 1)
-So as long as < Z, the Goal 1: r / (N' + 1) < Z
-In low priority phase, Hi are sent at the: r * N' / (N' + 1) 
-
-Z < r * N' / (N' + 1)  
-
----
-Find lower bound:
-From 1 & 2
-r / (N' + 1) < Z < N' / (N' + 1) * r  
-
-N' > (r - Z) / Z
-N' > Z / (r - Z)
-
-Take the max above
